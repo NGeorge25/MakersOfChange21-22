@@ -25,12 +25,14 @@ def changeFile(title, message, image, pathway):
     with open(pathway) as inf:
         txt = inf.read()
     soup = bs4.BeautifulSoup(txt, features="html.parser")
-
+    string = "<button class=\"button1\" onclick=\"send('"+message+"')\"><img src=\"imgs/Custom/"+image+"\"/>"+title+"</button>"
+    
     str1 = soup.contents
-    str2 = str1[0].__str__().split("<button onclick=\"send('"+message+"')\" class=\"button1\"><img src=\"imgs/Custom/"+image+"\"/>"+title+"</button>", 1)
-    print(str1)
-    print(str2)
-
+    str2 = str1[0].__str__().split(string, 1)
+    
+    
+    
+    
     data = str2[0] + str2[1]
     print(data)
     soup2 = bs4.BeautifulSoup(data, features="html.parser")

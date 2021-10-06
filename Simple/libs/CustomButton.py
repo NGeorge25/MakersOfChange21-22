@@ -1,6 +1,23 @@
 import bs4
 import tkinter as tk
 window = tk.Tk()
+ 
+import json
+ 
+def addLog(title, message, image):
+    with open('Simple/libs/data.json', 'r') as openfile:
+        data = json.load(openfile)
+        data[title] = [message, image]
+    with open("Simple/libs/data.json", "w") as outfile:
+        json.dump(data, outfile)
+def removeLog(title):
+    with open('Simple/libs/data.json', 'r') as openfile:
+        data = json.load(openfile)
+        data.pop(data.keys().index(title))
+    with open("Simple/libs/data.json", "w") as outfile:
+        json.dump(data, outfile)
+
+
 
 paths = {'Activities Board': "Simple/Activity.html",
          'Drink Menu': "Simple/Drink.html",

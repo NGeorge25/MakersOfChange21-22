@@ -74,8 +74,8 @@ def changeFileAdd(title, message, image, pathway):
     print(str1)
     str2 = str1[0].__str__().split("</body>", 1)
    
-    data = str2[0] + "<button onclick=\"send('"+message+"')\" class=\"button1\"><img src=\"imgs/Custom/"+image+"\"/>"+title+"</button>" +"\n</body>"+ str2[1]
-
+    data = str2[0] + "<button onclick=\"send('"+message+"')\" class=\"button1\"><img src=\"imgs/Custom/"+image+"\" style=\"height: 80%; width: 80%;\"/>"+title+"</button>" +"\n</body>"+ str2[1]
+    print(data)
     soup2 = bs4.BeautifulSoup(data, features="html.parser")
 
     with open(pathway, "w") as outf:
@@ -96,8 +96,8 @@ def changeFileRemove(title, message, image, pathway):
     with open(pathway) as inf:
         txt = inf.read()
     soup = bs4.BeautifulSoup(txt, features="html.parser")
-    string = "<button class=\"button1\" onclick=\"send('"+message+"')\"><img src=\"imgs/Custom/"+image+"\"/>"+title+"</button>"
-    
+    string = "<button class=\"button1\" onclick=\"send('"+message+"')\"><img src=\"imgs/Custom/"+image+"\" style=\"height: 80%; width: 80%;\"/>"+title+"</button>"
+    print(string)
     str1 = soup.contents
     str2 = str1[0].__str__().split(string, 1)
 
